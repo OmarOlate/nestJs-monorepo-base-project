@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nest-js-monorepo-base-project/find-all-users": [
+        "libs/auth/find-all-users/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/swagger": [
+        "libs/common/swagger/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
