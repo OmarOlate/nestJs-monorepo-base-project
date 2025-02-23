@@ -3,7 +3,7 @@ const { join } = require('path');
 
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/nestJs-monorepo-base-project'),
+    path: join(__dirname, '../../dist/apps/auth'),
   },
   plugins: [
     new NxAppWebpackPlugin({

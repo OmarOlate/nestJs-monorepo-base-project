@@ -1,7 +1,7 @@
 {
-  "name": "nestJs-monorepo-base-project",
+  "name": "auth",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/nestJs-monorepo-base-project/src",
+  "sourceRoot": "apps/auth/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -22,15 +22,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "nestJs-monorepo-base-project:build",
+        "buildTarget": "auth:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "nestJs-monorepo-base-project:build:development"
+          "buildTarget": "auth:build:development"
         },
         "production": {
-          "buildTarget": "nestJs-monorepo-base-project:build:production"
+          "buildTarget": "auth:build:production"
         }
       }
     },
