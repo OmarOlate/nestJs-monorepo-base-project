@@ -1,0 +1,9 @@
+{
+  "name": "find-provindes-by-region-id",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/find-provindes-by-region-id/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project find-provindes-by-region-id --web",
+  "targets": {}
+}

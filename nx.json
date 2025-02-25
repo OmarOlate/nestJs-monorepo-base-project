@@ -15,11 +15,11 @@
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "generators": {
-    "@nx/nest:application":{
+    "@nx/nest:application": {
       "e2eTestRunner": "none"
     }
   },
-  "nxCloudId": "67b9d50204f918611ba06c0d",
+  "nxCloudId": "67bbd9ed5d8821787e5d12bb",
   "plugins": [
     {
       "plugin": "@nx/webpack/plugin",
@@ -44,5 +44,6 @@
       },
       "exclude": ["apps/nestJs-monorepo-base-project-e2e/**/*"]
     }
-  ]
+  ],
+  "defaultBase": "master"
 }

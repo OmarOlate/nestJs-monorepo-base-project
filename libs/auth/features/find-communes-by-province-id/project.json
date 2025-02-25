@@ -1,0 +1,9 @@
+{
+  "name": "find-communes-by-province-id",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/find-communes-by-province-id/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project find-communes-by-province-id --web",
+  "targets": {}
+}

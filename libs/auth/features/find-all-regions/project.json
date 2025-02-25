@@ -1,0 +1,9 @@
+{
+  "name": "find-all-regions",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/find-all-regions/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project find-all-regions --web",
+  "targets": {}
+}

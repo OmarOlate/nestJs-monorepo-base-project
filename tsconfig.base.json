@@ -15,8 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nest-js-monorepo-base-project/find-all-users": [
-        "libs/auth/find-all-users/src/index.ts"
+      "@nest-js-monorepo-base-project/find-all-modules": [
+        "libs/auth/features/find-all-modules/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/find-all-regions": [
+        "libs/auth/features/find-all-regions/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/find-communes-by-province-id": [
+        "libs/auth/features/find-communes-by-province-id/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/find-provindes-by-region-id": [
+        "libs/auth/features/find-provindes-by-region-id/src/index.ts"
       ],
       "@nest-js-monorepo-base-project/swagger": [
         "libs/common/swagger/src/index.ts"
