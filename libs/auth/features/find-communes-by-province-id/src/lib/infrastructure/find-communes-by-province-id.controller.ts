@@ -1,10 +1,7 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { FindCommunesByProvinceIdUseCase } from '../application';
-import {
-  FindCommunesByProvinceIdRequestDto,
-  FindCommunesByProvinceIdResponseDto,
-} from './dtos';
+import { FindCommunesByProvinceIdResponseDto } from './dtos';
 
 @ApiTags('Address')
 @Controller()

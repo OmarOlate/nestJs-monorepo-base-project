@@ -1,8 +1,15 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Commune, ModuleEntity, Province, Region } from './src/entities';
+import {
+  Commune,
+  ModuleEntity,
+  Province,
+  Region,
+  StatusUser,
+  User,
+} from './src/entities';
 
-const ENTITIES = [ModuleEntity, Region, Province, Commune];
+const ENTITIES = [ModuleEntity, Region, Province, Commune, User, StatusUser];
 
 @Global()
 @Module({

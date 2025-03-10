@@ -1,0 +1,9 @@
+{
+  "name": "authenticate-user",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/authenticate-user/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project authenticate-user --web",
+  "targets": {}
+}
