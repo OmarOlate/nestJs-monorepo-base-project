@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nest-js-monorepo-base-project/authenticate-user": [
+        "libs/auth/features/authenticate-user/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/create-user": [
+        "libs/auth/features/create-user/src/index.ts"
+      ],
       "@nest-js-monorepo-base-project/find-all-modules": [
         "libs/auth/features/find-all-modules/src/index.ts"
       ],

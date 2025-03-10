@@ -59,6 +59,7 @@ CREATE TABLE `contacts` (
   `cellphone` varchar(15),
   `address` varchar(50),
   `city` varchar(100),
+  `email` varchar(200),
   `commune_id` int
 );
 
@@ -89,6 +90,40 @@ CREATE TABLE `users_roles` (
   `role_id` int
 );
 
+CREATE TABLE `commerce_status` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `code` varchar(100),
+  `description` varchar(255)
+);
+
+CREATE TABLE `commerces` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `rut` varchar(15),
+  `commerce_status_id` int,
+  `contact_id` int,
+  `created_at` datetime NOT NULL DEFAULT (now()),
+  `updated_at` datetime NOT NULL DEFAULT (now()),
+  `deleted_at` datetime
+);
+
+CREATE TABLE `commerce_branch` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(100),
+  `commerce_id` int,
+  `contact_id` int,
+  `commerce_status_id` int,
+  `created_at` datetime NOT NULL DEFAULT (now()),
+  `updated_at` datetime NOT NULL DEFAULT (now()),
+  `deleted_at` datetime
+);
+
+CREATE TABLE `users_ecommerces` (
+  `user_id` int,
+  `commerce_id` int,
+  `commerce_branch_id` int
+);
+
 ALTER TABLE `permissions` ADD FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`);
 
 ALTER TABLE `roles_permissions` ADD FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
@@ -108,3 +143,19 @@ ALTER TABLE `users` ADD FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`);
 ALTER TABLE `users_roles` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 ALTER TABLE `users_roles` ADD FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+ALTER TABLE `commerces` ADD FOREIGN KEY (`commerce_status_id`) REFERENCES `commerce_status` (`id`);
+
+ALTER TABLE `commerces` ADD FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`);
+
+ALTER TABLE `commerce_branch` ADD FOREIGN KEY (`commerce_id`) REFERENCES `commerces` (`id`);
+
+ALTER TABLE `commerce_branch` ADD FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`);
+
+ALTER TABLE `commerce_branch` ADD FOREIGN KEY (`commerce_status_id`) REFERENCES `commerce_status` (`id`);
+
+ALTER TABLE `users_ecommerces` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+ALTER TABLE `users_ecommerces` ADD FOREIGN KEY (`commerce_id`) REFERENCES `commerces` (`id`);
+
+ALTER TABLE `users_ecommerces` ADD FOREIGN KEY (`commerce_branch_id`) REFERENCES `commerce_branch` (`id`);
