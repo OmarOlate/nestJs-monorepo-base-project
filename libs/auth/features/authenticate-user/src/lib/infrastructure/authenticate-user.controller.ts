@@ -1,12 +1,13 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthenticateUserUseCase } from '../application';
+import { ApiPath } from '../../../../../enums/api-path.enum';
 import {
   AuthenticateUserRequestDto,
   AuthenticateUserResponseDto,
 } from './dtos';
 
-@ApiTags('Login')
+@ApiTags(ApiPath.LOGIN)
 @Controller()
 export class AuthenticateUserController {
   constructor(

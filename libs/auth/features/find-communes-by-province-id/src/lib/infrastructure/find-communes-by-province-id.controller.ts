@@ -2,8 +2,9 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { FindCommunesByProvinceIdUseCase } from '../application';
 import { FindCommunesByProvinceIdResponseDto } from './dtos';
+import { ApiPath } from '../../../../../enums/api-path.enum';
 
-@ApiTags('Address')
+@ApiTags(ApiPath.ADDRESS)
 @Controller()
 export class FindCommunesByProvinceIdController {
   constructor(

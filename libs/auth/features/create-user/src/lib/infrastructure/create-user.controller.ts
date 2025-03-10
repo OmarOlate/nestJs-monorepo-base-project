@@ -2,8 +2,9 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateUserUseCase } from '../application';
 import { CreateUserRequestDto } from './dtos';
+import { ApiPath } from '../../../../../enums/api-path.enum';
 
-@ApiTags('Login')
+@ApiTags(ApiPath.LOGIN)
 @Controller()
 export class CreateUserController {
   constructor(private readonly createUserUseCase: CreateUserUseCase) {}
