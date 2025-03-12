@@ -27,6 +27,9 @@
       "@nest-js-monorepo-base-project/find-all-regions": [
         "libs/auth/features/find-all-regions/src/index.ts"
       ],
+      "@nest-js-monorepo-base-project/find-all-users": [
+        "libs/auth/features/find-all-users/src/index.ts"
+      ],
       "@nest-js-monorepo-base-project/find-communes-by-province-id": [
         "libs/auth/features/find-communes-by-province-id/src/index.ts"
       ],
