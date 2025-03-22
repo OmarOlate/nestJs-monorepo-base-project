@@ -7,7 +7,7 @@ import {
   Region,
   StatusUser,
   User,
-} from './src/entities';
+} from './src';
 
 const ENTITIES = [ModuleEntity, Region, Province, Commune, User, StatusUser];
 
