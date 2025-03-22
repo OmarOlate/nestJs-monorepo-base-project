@@ -8,6 +8,7 @@ import { CreateUserModule } from '@nest-js-monorepo-base-project/create-user';
 import { AuthenticateUserModule } from '@nest-js-monorepo-base-project/authenticate-user';
 import { ConfigModule } from '@nestjs/config';
 import { FindAllUsersModule } from '@nest-js-monorepo-base-project/find-all-users';
+import { ResetPasswordModule } from '@nest-js-monorepo-base-project/reset-password';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { FindAllUsersModule } from '@nest-js-monorepo-base-project/find-all-user
     CreateUserModule,
     AuthenticateUserModule,
     FindAllUsersModule,
+    ResetPasswordModule,
     RouterModule.register([
       {
         path: 'modules',
@@ -49,6 +51,10 @@ import { FindAllUsersModule } from '@nest-js-monorepo-base-project/find-all-user
           {
             path: 'create-user',
             module: CreateUserModule,
+          },
+          {
+            path: 'reset-password',
+            module: ResetPasswordModule,
           },
         ],
       },
