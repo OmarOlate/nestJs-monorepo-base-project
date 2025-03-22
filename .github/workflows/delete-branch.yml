@@ -1,0 +1,22 @@
+name: Delete Branch After Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - develop
+      - qa
+      - pre-prod
+
+jobs:
+  delete-branch:
+    if: github.event.pull_request.merged == true &&
+        (github.event.pull_request.base.ref == 'develop' ||
+         github.event.pull_request.base.ref == 'qa' ||
+         github.event.pull_request.base.ref == 'pre-prod')
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: delete merged branch
+        uses: SvanBoxel/delete-merged-branch@v3
