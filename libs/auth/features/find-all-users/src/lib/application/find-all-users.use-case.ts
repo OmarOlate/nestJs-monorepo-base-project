@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { FIND_ALL_USERS_SERVICE, FindAllUsersService } from './ports';
+import { FindAllUsersInputDto } from '../domain';
 
 @Injectable()
 export class FindAllUsersUseCase {
@@ -8,7 +9,7 @@ export class FindAllUsersUseCase {
     private readonly findAllUsersService: FindAllUsersService
   ) {}
 
-  async execute() {
-    return await this.findAllUsersService.execute();
+  async execute(filters: FindAllUsersInputDto) {
+    return await this.findAllUsersService.execute(filters);
   }
 }
