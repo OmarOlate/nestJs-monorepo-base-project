@@ -1,0 +1,10 @@
+{
+  "name": "find-all-users",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/find-all-users/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+
+  }
+}

@@ -7,6 +7,7 @@ import { FindCommunesByProvinceIdModule } from '@nest-js-monorepo-base-project/f
 import { CreateUserModule } from '@nest-js-monorepo-base-project/create-user';
 import { AuthenticateUserModule } from '@nest-js-monorepo-base-project/authenticate-user';
 import { ConfigModule } from '@nestjs/config';
+import { FindAllUsersModule } from '@nest-js-monorepo-base-project/find-all-users';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ConfigModule } from '@nestjs/config';
     FindCommunesByProvinceIdModule,
     CreateUserModule,
     AuthenticateUserModule,
+    FindAllUsersModule,
     RouterModule.register([
       {
         path: 'modules',
@@ -47,6 +49,15 @@ import { ConfigModule } from '@nestjs/config';
           {
             path: 'create-user',
             module: CreateUserModule,
+          },
+        ],
+      },
+      {
+        path: 'users',
+        children: [
+          {
+            path: 'users',
+            module: FindAllUsersModule,
           },
         ],
       },
