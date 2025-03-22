@@ -44,6 +44,12 @@
       "exclude": ["apps/nestJs-monorepo-base-project-e2e/**/*"]
     }
   ],
-  "defaultBase": "master"
-
+  "defaultBase": "master",
+  "targetDefaults": {
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  }
 }

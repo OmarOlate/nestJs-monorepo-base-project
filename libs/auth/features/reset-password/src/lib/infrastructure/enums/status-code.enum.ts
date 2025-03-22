@@ -1,0 +1,4 @@
+export const STATUS_CODE = {
+  PENDING_PASSWORD: 'PENDING-PASSWORD',
+  ACTIVE: 'ACTIVE',
+};
