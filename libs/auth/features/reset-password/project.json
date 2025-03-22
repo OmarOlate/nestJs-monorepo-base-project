@@ -1,0 +1,9 @@
+{
+  "name": "reset-password",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/reset-password/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+  }
+}
