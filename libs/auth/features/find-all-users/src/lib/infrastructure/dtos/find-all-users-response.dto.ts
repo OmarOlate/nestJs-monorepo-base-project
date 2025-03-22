@@ -6,50 +6,40 @@ export class FindAllUsersResponseDto implements FindAllUsersOutputDto {
   @ApiProperty({ example: 1, description: 'Unique ID of user' })
   @IsInt()
   @IsNotEmpty()
-  id: number;
+  id!: number;
 
   @ApiProperty({ description: 'Unique UUID' })
   @IsString()
   @IsNotEmpty()
-  code: string;
+  code!: string;
 
   @ApiProperty({ description: 'Unique user rut' })
   @IsString()
   @IsNotEmpty()
-  rut: string;
+  rut!: string;
 
   @ApiProperty({ description: 'User name' })
   @IsString()
   @IsNotEmpty()
-  name: string;
-
-  @ApiProperty({ description: 'Last name' })
-  @IsString()
-  @IsNotEmpty()
-  fatherLastName: string;
-
-  @ApiProperty({ description: 'Last name' })
-  @IsString()
-  @IsNotEmpty()
-  matherLastName: string;
+  fullName!: string;
 
   @ApiProperty({ example: 'dummy@example.com', description: 'email' })
   @IsString()
   @IsNotEmpty()
-  email: string;
+  email!: string;
 
   @ApiProperty({ description: 'Commerce name' })
   @IsString()
   @IsNotEmpty()
-  nameCommerce: string;
+  nameCommerce!: string;
 
   @ApiProperty({ description: 'Commerce name branch' })
   @IsString()
   @IsNotEmpty()
-  nameCommerceBranch: string;
+  nameCommerceBranch!: string;
 
   @ApiProperty({ description: 'status code' })
   @IsString()
   @IsNotEmpty()
-  statusCode: string;
+  statusCode!: string;
 }

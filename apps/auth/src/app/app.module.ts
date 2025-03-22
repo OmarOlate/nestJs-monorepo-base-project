@@ -54,7 +54,12 @@ import { FindAllUsersModule } from '@nest-js-monorepo-base-project/find-all-user
       },
       {
         path: 'users',
-        module: FindAllUsersModule,
+        children: [
+          {
+            path: 'users',
+            module: FindAllUsersModule,
+          },
+        ],
       },
     ]),
   ],
