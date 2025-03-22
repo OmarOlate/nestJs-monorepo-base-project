@@ -1,36 +1,57 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { FindAllUsersService } from '../application';
-import { FindAllUsersOutputDto } from '../domain';
+import { FindAllUsersInputDto, FindAllUsersOutputDto } from '../domain';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FindAllUsersResponseDto } from './dtos';
+import { FindAllUsersRequestDto, FindAllUsersResponseDto } from './dtos';
 import { FindAllUsersView } from 'libs/auth/database/src';
+import { filter, map } from 'rxjs/operators';
+import { FindAllUsersMapperService } from './find-all-users-mapper.service';
 
 @Injectable()
 export class FindAllUsersSqlService implements FindAllUsersService {
   constructor(
     @InjectRepository(FindAllUsersView)
-    private findAllUsersView: Repository<FindAllUsersView>
+    private findAllUsersView: Repository<FindAllUsersView>,
+    private readonly findAllUsersMapperService: FindAllUsersMapperService
   ) {}
 
-  async execute(): Promise<Readonly<FindAllUsersOutputDto[]>> {
-    const usersView = await this.findAllUsersView.find();
+  async execute(
+    filters: FindAllUsersRequestDto
+  ): Promise<Readonly<FindAllUsersOutputDto[]>> {
+    const queryBuilder = await this.createQueryBuilder(filters);
 
-    if (!usersView) throw new NotFoundException(`Users not found`);
+    const usersView = await queryBuilder.getMany();
 
-    const result: FindAllUsersResponseDto[] = usersView.map((usersView) => ({
-      id: usersView.id,
-      code: usersView.code,
-      email: usersView.email,
-      fatherLastName: usersView.fatherLastName,
-      matherLastName: usersView.matherLastName,
-      name: usersView.name,
-      nameCommerce: usersView.nameCommerce,
-      nameCommerceBranch: usersView.nameCommerceBranch,
-      rut: usersView.rut,
-      statusCode: usersView.statusCode,
-    }));
+    return this.findAllUsersMapperService.mapper(usersView);
+  }
 
-    return result;
+  private async createQueryBuilder(filters: FindAllUsersInputDto) {
+    const queryBuilder = this.findAllUsersView.createQueryBuilder('view');
+
+    if (filters.name) {
+      queryBuilder.andWhere('view.fullName LIKE :name', {
+        name: `%${filters.name}%`,
+      });
+    }
+
+    if (filters.email) {
+      queryBuilder.andWhere('view.email LIKE :email', {
+        email: `%${filters.email}%`,
+      });
+    }
+    if (filters.status) {
+      queryBuilder.andWhere('view.statusCode = :statusCode', {
+        statusCode: filters.status,
+      });
+    }
+
+    const page = filters.page ?? 1;
+    const perPage = filters.perPage ?? 10;
+    const offset = (page - 1) * perPage;
+
+    queryBuilder.skip(offset).take(perPage);
+
+    return queryBuilder;
   }
 }
