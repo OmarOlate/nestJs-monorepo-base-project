@@ -14,7 +14,7 @@ export class StandardizedResponseDto<T> {
   perPage?: number;
 
   @ApiProperty({ description: 'Total de elementos', required: false })
-  total?: number;
+  totalItems?: number;
 
   constructor(
     data: T | T[],
@@ -22,12 +22,12 @@ export class StandardizedResponseDto<T> {
       isArray?: boolean;
       currentPage?: number;
       perPage?: number;
-      total?: number;
+      totalItems?: number;
     }
   ) {
     this.data = options?.isArray ? (data as T[]) : (data as T);
     this.currentPage = options?.currentPage;
     this.perPage = options?.perPage;
-    this.total = options?.total;
+    this.totalItems = options?.totalItems;
   }
 }
