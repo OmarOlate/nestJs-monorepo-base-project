@@ -14,18 +14,23 @@ export class TransformInterceptor<T> implements NestInterceptor {
       isArray?: boolean;
       currentPage?: number;
       perPage?: number;
-      total?: number;
+      totalItems?: number;
     }
   ) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
       map((data) => {
+        let flattenedData = data;
+        if (Array.isArray(data) && Array.isArray(data[0])) {
+          flattenedData = data.flat();
+        }
+
         return {
-          data: this.options?.isArray ? data : [data], // Si no es un array, lo convierto en uno.
+          data: flattenedData,
           currentPage: this.options?.currentPage ?? 1,
-          perPage: this.options?.perPage ?? data.length,
-          total: data.length,
+          perPage: this.options?.perPage ?? flattenedData.length,
+          totalItems: this.options?.totalItems ?? flattenedData.length,
         };
       })
     );
