@@ -9,7 +9,7 @@ export function StandardizedResponse(
     description?: string;
     currentPage?: number;
     perPage?: number;
-    total?: number;
+    totalItems?: number;
   }
 ) {
   return applyDecorators(
@@ -18,7 +18,7 @@ export function StandardizedResponse(
         isArray: options?.isArray,
         currentPage: options?.currentPage,
         perPage: options?.perPage,
-        total: options?.total,
+        totalItems: options?.totalItems,
       })
     ),
     ApiOkResponse({
@@ -33,7 +33,7 @@ export function StandardizedResponse(
           },
           currentPage: { type: 'number', nullable: true },
           perPage: { type: 'number', nullable: true },
-          total: { type: 'number', nullable: true },
+          totalItems: { type: 'number', nullable: true },
         },
       },
     })
