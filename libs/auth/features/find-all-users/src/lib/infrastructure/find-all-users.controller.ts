@@ -22,6 +22,7 @@ export class FindAllUsersController {
   async execute(
     @Query() filters: FindAllUsersRequestDto
   ): Promise<Readonly<FindAllUsersResponseDto[]>> {
-    return await this.findAllUsersUseCase.execute(filters);
+    const result = await this.findAllUsersUseCase.execute(filters);
+    return result;
   }
 }
