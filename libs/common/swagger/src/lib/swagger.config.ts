@@ -7,6 +7,7 @@ export function setupSwagger(app: INestApplication, appName: string): void {
     .setTitle(`${appName} API for ${workSpaceName}`)
     .setDescription(`${appName} API documentation for backoffice management`)
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

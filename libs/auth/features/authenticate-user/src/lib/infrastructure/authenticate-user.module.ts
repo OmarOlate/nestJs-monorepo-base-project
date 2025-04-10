@@ -8,13 +8,15 @@ import {
 } from '../application';
 import { AuthDatabaseModule, User } from 'libs/auth/database';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtSecretKeyEnum } from './enums';
 
 @Module({
   controllers: [AuthenticateUserController],
   imports: [
     JwtModule.register({
-      secret: 'your-secret-key',
-      signOptions: { expiresIn: '1h' },
+      global: true,
+      secret: JwtSecretKeyEnum.secret,
+      signOptions: { expiresIn: '2h' },
     }),
     TypeOrmModule.forFeature([User]),
     AuthDatabaseModule,
