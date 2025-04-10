@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { FindAllRegionsUseCase } from '../application/find-all-regions.use-case';
 import { ApiPath } from '../../../../../enums/api-path.enum';
 
@@ -8,6 +8,7 @@ import { ApiPath } from '../../../../../enums/api-path.enum';
 export class FindALlRegionsController {
   constructor(private readonly findAllRegionsUseCase: FindAllRegionsUseCase) {}
 
+  @ApiBearerAuth()
   @Get()
   @ApiOperation({ description: 'Find all regions' })
   execute() {
