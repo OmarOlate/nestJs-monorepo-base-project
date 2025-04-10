@@ -1,6 +1,11 @@
-import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from '@nestjs/swagger';
 import { ApiPath } from '../../../../../enums/api-path.enum';
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { FindAllUsersUseCase } from '../application';
 import { FindAllUsersRequestDto, FindAllUsersResponseDto } from './dtos';
 import { StandardizedResponse } from '../../../../../../common/decorators/standarized-response.decorator';
@@ -10,15 +15,10 @@ import { StandardizedResponse } from '../../../../../../common/decorators/standa
 export class FindAllUsersController {
   constructor(private readonly findAllUsersUseCase: FindAllUsersUseCase) {}
 
+  @ApiBearerAuth()
   @Get()
   @ApiOperation({ description: 'Find all users' })
-  @StandardizedResponse(FindAllUsersResponseDto, {
-    // isArray: true,
-    // description: 'find all users',
-    // currentPage: 10,
-    // perPage: 10,
-    // total: 100,
-  })
+  @StandardizedResponse(FindAllUsersResponseDto)
   async execute(
     @Query() filters: FindAllUsersRequestDto
   ): Promise<Readonly<FindAllUsersResponseDto[]>> {
