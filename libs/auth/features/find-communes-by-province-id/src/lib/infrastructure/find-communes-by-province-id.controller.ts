@@ -1,5 +1,10 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from '@nestjs/swagger';
 import { FindCommunesByProvinceIdUseCase } from '../application';
 import { FindCommunesByProvinceIdResponseDto } from './dtos';
 import { ApiPath } from '../../../../../enums/api-path.enum';
@@ -11,6 +16,7 @@ export class FindCommunesByProvinceIdController {
     private readonly findCommunesByProvinceIdUseCase: FindCommunesByProvinceIdUseCase
   ) {}
 
+  @ApiBearerAuth()
   @Get(':provinceId')
   @ApiOperation({ description: 'Find all communes by province id' })
   @ApiParam({
