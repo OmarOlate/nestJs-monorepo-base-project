@@ -6,15 +6,15 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "ofline": "nx run-many --target=serve --all",
-    "migration:create": "node libs/common/scripts/create-migration.mjs",
-    "migration:generate": "node libs/common/scripts/create-migration.mjs",
-    "migration:run": "node libs/common/scripts/run-migration.mjs",
-    "migration:revert": "node libs/common/scripts/revert-migration.js"
+    "auth:migration:create": "ts-node --esm ./node_modules/typeorm/cli.js migration:create",
+    "auth:migration:generate": "ts-node --esm ./node_modules/typeorm/cli.js -d apps/auth/typeorm.config.ts migration:generate",
+    "auth:migration:run": "ts-node --esm ./node_modules/typeorm/cli.js -d apps/auth/typeorm.config.ts migration:run",
+    "auth:migration:revert": "ts-node --esm ./node_modules/typeorm/cli.js -d apps/auth/typeorm.config.ts migration:revert"
   },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^11.0.10",
-    "@nestjs/config": "^4.0.1",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.10",
     "@nestjs/event-emitter": "^3.0.0",
     "@nestjs/jwt": "^11.0.0",
@@ -26,10 +26,11 @@
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "mysql": "^2.18.1",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
+    "pg": "^8.16.2",
     "reflect-metadata": "^0.1.14",
     "rxjs": "^7.8.0",
     "uuid": "^11.1.0"
@@ -67,8 +68,8 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tslib": "^2.3.0",
-    "typeorm": "^0.3.20",
-    "typescript": "^5.7.3",
+    "typeorm": "^0.3.25",
+    "typescript": "^5.8.3",
     "typescript-eslint": "^8.19.0",
     "webpack-cli": "^5.1.4"
   },
