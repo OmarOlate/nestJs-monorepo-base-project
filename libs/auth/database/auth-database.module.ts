@@ -8,25 +8,28 @@ import {
   StatusUser,
   User,
 } from './src';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 const ENTITIES = [ModuleEntity, Region, Province, Commune, User, StatusUser];
 
 @Global()
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'auth',
-      entities: [...ENTITIES],
-      synchronize: false,
-      autoLoadEntities: true,
-      migrations: ['./src/migrations/*.ts'],
+    ConfigModule.forRoot({
+      isGlobal: true
     }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        type: 'postgres',
+        url: config.getOrThrow<string>('DATABASE_URL'),
+        entities: ENTITIES,
+        synchronize: false,
+        autoLoadEntities: true
+      })
+    })
   ],
-  exports: [TypeOrmModule], // Exporta DataSource
+  exports: [TypeOrmModule], 
 })
 export class AuthDatabaseModule {}
