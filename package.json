@@ -6,10 +6,10 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "ofline": "nx run-many --target=serve --all",
-    "migration:create": "node libs/common/scripts/create-migration.mjs",
-    "migration:generate": "node libs/common/scripts/create-migration.mjs",
-    "migration:run": "node libs/common/scripts/run-migration.mjs",
-    "migration:revert": "node libs/common/scripts/revert-migration.js"
+    "auth:migration:create": "ts-node --esm ./node_modules/typeorm/cli.js migration:create",
+    "auth:migration:generate": "ts-node --esm ./node_modules/typeorm/cli.js -d apps/auth/typeorm.config.ts migration:generate",
+    "auth:migration:run": "ts-node --esm ./node_modules/typeorm/cli.js -d apps/auth/typeorm.config.ts migration:run",
+    "auth:migration:revert": "ts-node --esm ./node_modules/typeorm/cli.js -d apps/auth/typeorm.config.ts migration:revert"
   },
   "private": true,
   "dependencies": {
@@ -69,7 +69,7 @@
     "tsconfig-paths": "^4.2.0",
     "tslib": "^2.3.0",
     "typeorm": "^0.3.25",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.3",
     "typescript-eslint": "^8.19.0",
     "webpack-cli": "^5.1.4"
   },

@@ -25,7 +25,8 @@ const ENTITIES = [ModuleEntity, Region, Province, Commune, User, StatusUser];
         type: 'postgres',
         url: config.getOrThrow<string>('DATABASE_URL'),
         entities: ENTITIES,
-        synchronize: true
+        synchronize: false,
+        autoLoadEntities: true
       })
     })
   ],
