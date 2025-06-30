@@ -9,10 +9,7 @@ import { StatusUser } from './status-user.entity';
 
 @Entity('users')
 export class User {
-  @PrimaryGeneratedColumn()
-  readonly id: number;
-
-  @Column({ name: 'code' })
+  @PrimaryGeneratedColumn('uuid')
   readonly code: string;
 
   @Column({ name: 'rut' })
