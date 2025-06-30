@@ -1,0 +1,9 @@
+{
+  "name": "new-user-password-validate",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/new-user-password-validate/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project new-user-password-validate --web",
+  "targets": {}
+}
