@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { FindCommunesByProvinceIdInputDto } from '../../domain';
-import { IsInt, IsNotEmpty, IsNumber, IsPositive } from 'class-validator';
+import { IsInt, IsPositive } from 'class-validator';
 
 export class FindCommunesByProvinceIdRequestDto
   implements FindCommunesByProvinceIdInputDto

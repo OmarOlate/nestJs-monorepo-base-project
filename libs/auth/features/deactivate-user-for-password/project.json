@@ -1,0 +1,9 @@
+{
+  "name": "deactivate-user-for-password",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/features/deactivate-user-for-password/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project deactivate-user-for-password --web",
+  "targets": {}
+}
