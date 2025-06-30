@@ -1,0 +1,1 @@
+export * from './deactivate-user-for-password-input.dto';

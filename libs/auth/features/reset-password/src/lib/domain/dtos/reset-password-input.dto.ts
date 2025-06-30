@@ -1,5 +1,5 @@
 export type ResetPasswordInputDto = Readonly<{
-  code: string;
-  currentPassword?: string;
+  email: string;
+  currentPassword: string;
   newPassword: string;
 }>;

@@ -1,6 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthenticateUserService } from '../application';
-import { AuthenticateUserInputDto, AuthenticateUserOutputDto } from '../domain';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../../../../../database';
 import { Repository } from 'typeorm';
@@ -38,7 +37,6 @@ export class AuthenticateUserSqlService implements AuthenticateUserService {
       throw new UnauthorizedException('Invalid credentials');
 
     const userData = {
-      id: user.id,
       rut: user.rut,
       code: user.code,
       name: user.name,

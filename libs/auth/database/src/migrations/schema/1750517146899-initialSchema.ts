@@ -7,7 +7,11 @@ export class InitialSchema1750517146899 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
 
     await queryRunner.query(`
-    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+      CREATE EXTENSION IF NOT EXISTS pgcrypto;
+    `);
+
+    await queryRunner.query(`
+      CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
     `);
 
     await queryRunner.query(`
@@ -109,8 +113,7 @@ export class InitialSchema1750517146899 implements MigrationInterface {
 
     await queryRunner.query(`
       CREATE TABLE "users" (
-        "id" SERIAL PRIMARY KEY,
-        "code" varchar(50) NOT NULL DEFAULT uuid_generate_v4(),
+        "code" uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
         "rut" varchar(12) UNIQUE,
         "name" varchar(100) NOT NULL,
         "father_last_name" varchar(100) NOT NULL,
@@ -128,8 +131,15 @@ export class InitialSchema1750517146899 implements MigrationInterface {
 
     await queryRunner.query(`
       CREATE TABLE "users_roles" (
-        "user_id" int,
+        "user_code" uuid,
         "role_id" int
+      );
+    `);
+
+    await queryRunner.query(`
+      CREATE TABLE "temporary_password" (
+        "code_user" uuid,
+        "password" varchar(50) NOT NULL DEFAULT (substring(encode(gen_random_bytes(12), 'base64') from 1 for 12))
       );
     `);
 
@@ -171,11 +181,15 @@ export class InitialSchema1750517146899 implements MigrationInterface {
     `);
 
     await queryRunner.query(`
-      ALTER TABLE "users_roles" ADD CONSTRAINT "FK_users_roles_user" FOREIGN KEY ("user_id") REFERENCES "users" ("id");
+      ALTER TABLE "users_roles" ADD CONSTRAINT "FK_users_roles_user" FOREIGN KEY ("user_code") REFERENCES "users" ("code");
     `);
 
     await queryRunner.query(`
       ALTER TABLE "users_roles" ADD CONSTRAINT "FK_users_roles_role" FOREIGN KEY ("role_id") REFERENCES "roles" ("id");
+    `);
+
+    await queryRunner.query(`
+      ALTER TABLE "temporary_password" ADD CONSTRAINT "FK_temp_pass_user" FOREIGN KEY ("code_user") REFERENCES "users" ("code");
     `);
   }
 
@@ -193,5 +207,7 @@ export class InitialSchema1750517146899 implements MigrationInterface {
     await queryRunner.query(`DROP TABLE IF EXISTS "roles"`);
     await queryRunner.query(`DROP TABLE IF EXISTS "permissions"`);
     await queryRunner.query(`DROP TABLE IF EXISTS "modules"`);
+    await queryRunner.query(`DROP TABLE IF EXISTS "temporary_password"`);
+
   }
 }
