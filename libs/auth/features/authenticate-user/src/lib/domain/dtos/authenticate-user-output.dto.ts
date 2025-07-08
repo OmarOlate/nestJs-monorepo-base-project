@@ -4,7 +4,6 @@ export type AuthenticateUserOutputDto = Readonly<{
 }>;
 
 type UserDataToken = Readonly<{
-  id: number;
   rut: string;
   code: string;
   name: string;

@@ -4,7 +4,6 @@ import { AuthenticateUserOutputDto } from '../../domain';
 export class AuthenticateUserResponseDto implements AuthenticateUserOutputDto {
   readonly token!: string;
   readonly userData!: Readonly<{
-    id: number;
     rut: string;
     code: string;
     name: string;

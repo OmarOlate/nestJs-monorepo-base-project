@@ -21,6 +21,12 @@
       "@nest-js-monorepo-base-project/create-user": [
         "libs/auth/features/create-user/src/index.ts"
       ],
+      "@nest-js-monorepo-base-project/deactivate-user-for-password": [
+        "libs/auth/features/deactivate-user-for-password/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/external-deactivate-user-for-password": [
+        "libs/auth/features/external-deactivate-user-for-password/src/index.ts"
+      ],
       "@nest-js-monorepo-base-project/find-all-modules": [
         "libs/auth/features/find-all-modules/src/index.ts"
       ],
@@ -36,8 +42,17 @@
       "@nest-js-monorepo-base-project/find-provindes-by-region-id": [
         "libs/auth/features/find-provindes-by-region-id/src/index.ts"
       ],
+      "@nest-js-monorepo-base-project/new-user-password-validate": [
+        "libs/auth/features/new-user-password-validate/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/operators": [
+        "libs/common/utils/operators/src/index.ts"
+      ],
       "@nest-js-monorepo-base-project/reset-password": [
         "libs/auth/features/reset-password/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/send-one-mail": [
+        "libs/send-email/features/send-one-mail/src/index.ts"
       ],
       "@nest-js-monorepo-base-project/swagger": [
         "libs/common/swagger/src/index.ts"

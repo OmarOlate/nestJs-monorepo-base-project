@@ -1,0 +1,1 @@
+export * from './lib/infrastructure/new-user-password-validate.module';

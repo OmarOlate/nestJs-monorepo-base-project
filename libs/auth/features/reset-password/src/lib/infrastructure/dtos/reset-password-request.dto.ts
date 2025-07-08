@@ -1,17 +1,16 @@
 import { ResetPasswordInputDto } from '../../domain';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class ResetPasswordRequestDto implements ResetPasswordInputDto {
   @ApiProperty({ description: 'User code', example: 'uuid' })
   @IsNotEmpty()
   @IsString()
-  code!: string;
+  email!: string;
 
   @ApiProperty({ description: 'current password', example: 'password' })
-  @IsOptional()
   @IsString()
-  currentPassword?: string | undefined;
+  currentPassword!: string;
 
   @ApiProperty({ description: 'new password', example: 'password' })
   @IsNotEmpty()
