@@ -1,0 +1,9 @@
+{
+  "name": "send-one-mail",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/send-email/features/send-one-mail/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project send-one-mail --web",
+  "targets": {}
+}

@@ -1,9 +1,14 @@
-import { DeactivateUserForPasswordInputDto } from "../../domain";
+import {
+  CreatePendingPasswordOutputDto,
+  DeactivateUserForPasswordInputDto,
+} from '../../domain';
 
 export type CreatePendingPasswordService = {
-    execute(
-        input: DeactivateUserForPasswordInputDto
-    ): Promise<void>
-}
+  execute(
+    input: DeactivateUserForPasswordInputDto
+  ): Promise<CreatePendingPasswordOutputDto>;
+};
 
-export const CREATE_PENDING_PASSWORD_SERVICE = Symbol('CreatePendingPasswordService');
+export const CREATE_PENDING_PASSWORD_SERVICE = Symbol(
+  'CreatePendingPasswordService'
+);

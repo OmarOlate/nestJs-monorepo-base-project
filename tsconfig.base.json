@@ -45,8 +45,14 @@
       "@nest-js-monorepo-base-project/new-user-password-validate": [
         "libs/auth/features/new-user-password-validate/src/index.ts"
       ],
+      "@nest-js-monorepo-base-project/operators": [
+        "libs/common/utils/operators/src/index.ts"
+      ],
       "@nest-js-monorepo-base-project/reset-password": [
         "libs/auth/features/reset-password/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/send-one-mail": [
+        "libs/send-email/features/send-one-mail/src/index.ts"
       ],
       "@nest-js-monorepo-base-project/swagger": [
         "libs/common/swagger/src/index.ts"

@@ -1,3 +1,3 @@
 export type DeactivateUserForPasswordInputDto = Readonly<{
-    userCode: string;
-}>
+  userCode: string;
+}>;
