@@ -1,7 +1,11 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AuthenticateUserService } from '../application';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../../../../../database';
+import { StatusUser, User } from '../../../../../database';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
@@ -9,6 +13,7 @@ import {
   AuthenticateUserRequestDto,
   AuthenticateUserResponseDto,
 } from './dtos';
+import { STATUS_CODE } from './enums/status-code.enum';
 
 @Injectable()
 export class AuthenticateUserSqlService implements AuthenticateUserService {
@@ -27,6 +32,9 @@ export class AuthenticateUserSqlService implements AuthenticateUserService {
     });
 
     if (!user) throw new UnauthorizedException('Invalid credentials');
+
+    if (user.status.code === STATUS_CODE.PENDING_PASSWORD)
+      throw new ConflictException(`User have pending password status`);
 
     const isPasswordValid = await bcrypt.compare(
       inputDto.password,

@@ -17,6 +17,7 @@ import { ExternalDeactivateUserForPasswordModule } from '@nest-js-monorepo-base-
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: '.env',
     }),
     FindAllModulesModule,
     FindAllRegionsModule,
@@ -64,16 +65,16 @@ import { ExternalDeactivateUserForPasswordModule } from '@nest-js-monorepo-base-
           },
           {
             path: 'new-password-validate',
-            module: NewUserPasswordValidateModule
+            module: NewUserPasswordValidateModule,
           },
           {
             path: 'deactivate-user-for-password',
-            module: DeactivateUserForPasswordModule
+            module: DeactivateUserForPasswordModule,
           },
           {
             path: 'external-deactivate-user-for-password',
-            module: ExternalDeactivateUserForPasswordModule
-          }
+            module: ExternalDeactivateUserForPasswordModule,
+          },
         ],
       },
       {

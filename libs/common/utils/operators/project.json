@@ -1,0 +1,9 @@
+{
+  "name": "operators",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/common/utils/operators/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project operators --web",
+  "targets": {}
+}
