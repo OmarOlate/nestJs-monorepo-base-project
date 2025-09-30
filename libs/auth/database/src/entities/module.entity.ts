@@ -1,4 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('modules')
 export class ModuleEntity {
@@ -9,5 +14,8 @@ export class ModuleEntity {
   readonly code: string;
 
   @Column({ name: 'name' })
-  readonly name: string;
+  name: string;
+
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp without time zone' })
+  updatedAt: Date;
 }

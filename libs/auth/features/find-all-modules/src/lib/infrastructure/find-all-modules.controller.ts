@@ -1,16 +1,29 @@
-import { Controller, Get } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Query, UseInterceptors } from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { FindAllModulesUseCase } from '../application';
+import { ApiPath } from '../../../../../enums/api-path.enum';
+import { FindAllModulesRequestDto, FindAllModulesResponseDto } from './dtos';
+import {
+  ApiPaginatedResponse,
+  PaginationInterceptor,
+} from '@nest-js-monorepo-base-project/pagination-interceptor';
 
-@ApiTags('Modules')
+@ApiTags(ApiPath.ROLES_AND_PERMISSIONS)
 @Controller()
 export class FindAllModulesController {
   constructor(private readonly findAllModulesUseCase: FindAllModulesUseCase) {}
 
   @ApiBearerAuth()
+  @UseInterceptors(PaginationInterceptor)
+  @ApiPaginatedResponse(FindAllModulesResponseDto)
   @Get()
   @ApiOperation({ description: 'Find all modules' })
-  findAllModules() {
-    return this.findAllModulesUseCase.execute();
+  async findAllModules(@Query() filters: FindAllModulesRequestDto) {
+    return this.findAllModulesUseCase.execute(filters);
   }
 }

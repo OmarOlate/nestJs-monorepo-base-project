@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { FIND_ALL_MODULES_SERVICE, FindAllModulesService } from './ports';
+import { FindAllModulesInputDto } from '../domain';
 
 @Injectable()
 export class FindAllModulesUseCase {
@@ -8,7 +9,7 @@ export class FindAllModulesUseCase {
     private readonly findAllModulesService: FindAllModulesService
   ) {}
 
-  async execute() {
-    return await this.findAllModulesService.findAllModules();
+  async execute(input: FindAllModulesInputDto) {
+    return await this.findAllModulesService.findAllModules(input);
   }
 }

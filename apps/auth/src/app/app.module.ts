@@ -12,7 +12,8 @@ import { ResetPasswordModule } from '@nest-js-monorepo-base-project/reset-passwo
 import { NewUserPasswordValidateModule } from '@nest-js-monorepo-base-project/new-user-password-validate';
 import { DeactivateUserForPasswordModule } from '@nest-js-monorepo-base-project/deactivate-user-for-password';
 import { ExternalDeactivateUserForPasswordModule } from '@nest-js-monorepo-base-project/external-deactivate-user-for-password';
-
+import { CreateModuleModule } from '@nest-js-monorepo-base-project/create-module';
+import { UpdateModuleModule } from '@nest-js-monorepo-base-project/update-module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -30,10 +31,25 @@ import { ExternalDeactivateUserForPasswordModule } from '@nest-js-monorepo-base-
     NewUserPasswordValidateModule,
     DeactivateUserForPasswordModule,
     ExternalDeactivateUserForPasswordModule,
+    CreateModuleModule,
+    UpdateModuleModule,
     RouterModule.register([
       {
-        path: 'modules',
-        module: FindAllModulesModule,
+        path: 'roles-and-permissions',
+        children: [
+          {
+            path: 'modules',
+            module: FindAllModulesModule,
+          },
+          {
+            path: 'modules',
+            module: CreateModuleModule,
+          },
+          {
+            path: 'modules',
+            module: UpdateModuleModule,
+          },
+        ],
       },
       {
         path: 'address',

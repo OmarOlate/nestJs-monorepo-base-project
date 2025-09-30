@@ -6,17 +6,26 @@ import {
   Province,
   Region,
   StatusUser,
+  TemporaryPassword,
   User,
 } from './src';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-const ENTITIES = [ModuleEntity, Region, Province, Commune, User, StatusUser];
+const ENTITIES = [
+  ModuleEntity,
+  Region,
+  Province,
+  Commune,
+  User,
+  StatusUser,
+  TemporaryPassword,
+];
 
 @Global()
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -24,12 +33,14 @@ const ENTITIES = [ModuleEntity, Region, Province, Commune, User, StatusUser];
       useFactory: (config: ConfigService) => ({
         type: 'postgres',
         url: config.getOrThrow<string>('DATABASE_URL'),
-        entities: ENTITIES,
+        // ssl: {
+        //   rejectUnauthorized: false,
+        // },
+        entities: [...ENTITIES],
         synchronize: false,
-        autoLoadEntities: true
-      })
-    })
+      }),
+    }),
   ],
-  exports: [TypeOrmModule], 
+  exports: [TypeOrmModule],
 })
 export class AuthDatabaseModule {}

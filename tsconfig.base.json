@@ -18,11 +18,17 @@
       "@nest-js-monorepo-base-project/authenticate-user": [
         "libs/auth/features/authenticate-user/src/index.ts"
       ],
+      "@nest-js-monorepo-base-project/create-module": [
+        "libs/auth/features/create-module/src/index.ts"
+      ],
       "@nest-js-monorepo-base-project/create-user": [
         "libs/auth/features/create-user/src/index.ts"
       ],
       "@nest-js-monorepo-base-project/deactivate-user-for-password": [
         "libs/auth/features/deactivate-user-for-password/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/decorators": [
+        "libs/common/decorators/src/index.ts"
       ],
       "@nest-js-monorepo-base-project/external-deactivate-user-for-password": [
         "libs/auth/features/external-deactivate-user-for-password/src/index.ts"
@@ -48,6 +54,9 @@
       "@nest-js-monorepo-base-project/operators": [
         "libs/common/utils/operators/src/index.ts"
       ],
+      "@nest-js-monorepo-base-project/pagination-interceptor": [
+        "libs/common/interceptors/pagination-interceptor/src/index.ts"
+      ],
       "@nest-js-monorepo-base-project/reset-password": [
         "libs/auth/features/reset-password/src/index.ts"
       ],
@@ -56,6 +65,9 @@
       ],
       "@nest-js-monorepo-base-project/swagger": [
         "libs/common/swagger/src/index.ts"
+      ],
+      "@nest-js-monorepo-base-project/update-module": [
+        "libs/auth/features/update-module/src/index.ts"
       ]
     }
   },

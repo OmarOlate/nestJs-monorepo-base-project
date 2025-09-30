@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthenticateUserUseCase } from '../application';
 import { ApiPath } from '../../../../../enums/api-path.enum';
-import { Public } from '../../../../../../common/decorators/public.decorator';
+import { Public } from '@nest-js-monorepo-base-project/decorators';
 import {
   AuthenticateUserRequestDto,
   AuthenticateUserResponseDto,

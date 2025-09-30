@@ -24,7 +24,11 @@ async function bootstrap() {
   app.useGlobalGuards(new AuthGuard(jwtService, reflector));
 
   setupSwagger(app, appName);
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+    })
+  );
 
   await app.listen(3000);
   Logger.log(`🚀 ${appName} API is running on http://localhost:3000/api`);

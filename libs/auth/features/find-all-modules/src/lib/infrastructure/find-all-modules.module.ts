@@ -7,11 +7,13 @@ import {
 import { FindAllModulesSqlService } from './find-all-modules.service';
 import { AuthDatabaseModule, ModuleEntity } from 'libs/auth/database';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { FindAllModulesMapperService } from './find-all-modules-mapper.service';
 
 @Module({
   controllers: [FindAllModulesController],
   providers: [
     FindAllModulesUseCase,
+    FindAllModulesMapperService,
     {
       provide: FIND_ALL_MODULES_SERVICE,
       useClass: FindAllModulesSqlService,

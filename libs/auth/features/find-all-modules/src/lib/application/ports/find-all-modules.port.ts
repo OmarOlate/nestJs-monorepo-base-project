@@ -1,7 +1,12 @@
-import { FindAllModulesOutputDto } from '../../domain/dtos';
+import {
+  FindAllModulesInputDto,
+  FindAllModulesOutputDto,
+} from '../../domain/dtos';
 
 export type FindAllModulesService = {
-  findAllModules: () => Promise<Readonly<FindAllModulesOutputDto>>;
+  findAllModules(
+    input: FindAllModulesInputDto
+  ): Promise<Readonly<FindAllModulesOutputDto[]>>;
 };
 
 export const FIND_ALL_MODULES_SERVICE = Symbol('FindAllModulesServie');

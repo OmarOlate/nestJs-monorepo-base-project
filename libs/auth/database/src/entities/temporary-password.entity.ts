@@ -1,10 +1,10 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('temporary_password')
-export class TemporaryPassword{
-    @PrimaryColumn({name: 'code_user'})
-    readonly codeUser: string;
+export class TemporaryPassword {
+  @PrimaryColumn({ name: 'code_user' })
+  readonly codeUser: string;
 
-    @Column({name: 'password'})
-    readonly password: string;
+  @Column({ name: 'password' })
+  readonly password: string;
 }
